@@ -1,0 +1,39 @@
+{
+  "name": "smart-shortcutkey-js-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --config webpack.config.dev.js --entry ./src/index.js --output-filename ./dist/main.js",
+    "dev:open": "webpack-dev-server --mode development --config webpack.config.dev.js --entry ./src/index.js --output-filename ./dist/main.js --open",
+    "build": "webpack --mode production && webpack --mode development --config webpack.config.dev.js",
+    "build-dev": "webpack --mode development --config webpack.config.dev.js"
+  },
+  "keywords": [],
+  "author": "Mohammed Meraj",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015-ie": "^6.7.0",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "minify": "^3.0.5",
+    "progress-bar-webpack-plugin": "^1.11.0",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^3.0.1",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
