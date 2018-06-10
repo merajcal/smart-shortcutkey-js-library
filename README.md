@@ -61,17 +61,15 @@ This library also work if element has unique label.
 |           Key                 |      Value     |                                                   Description                                         |
 |-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
 |   triggerShortcutKeyCode      | shiftKey       |    To trigger the action e.g. shiftKey + l                                                            |
-|   **applicationDefinedKeys**     |   -            |    -                                                                                                  |
-|-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
+|   **applicationDefinedKeys**  |   -            |    -                                                                                                  |
 |       keyCode                 |   76           |    The letter which will be combined with triggerShortcutKeyCode (i.e. shiftKey) to execute the action.|
 |       letter                  |   l            |    The letter which will be combined with triggerShortcutKeyCode (i.e. shiftKey) to execute the action.|
 |       actionName              |   Login        |    label of the shortcut key|
-|       **element**                |   -            |    -                                                                                                   |
-|-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
-|           id                 |   xxxx         |    id of the element for which shortcut key need to be defined.                                        |
-|           -className           |   l            |    css class name of the element if id is missing then class selector will be used to locate the element.|
-|           -label               |   l            |    label of the element, if id and css both are missing then label will be used to locate the element.|
-|           -tagName             |   l            |    element type e.g. div, span, button etc. If Id and CSS is missing then label and tagName is mandatory.|
+|       **element**             |   -            |    -                                                                                                   |
+|           id                  |   xxxx         |    id of the element for which shortcut key need to be defined.                                        |
+|           -className          |   l            |    css class name of the element if id is missing then class selector will be used to locate the element.|
+|           -label              |   l            |    label of the element, if id and css both are missing then label will be used to locate the element.|
+|           -tagName            |   l            |    element type e.g. div, span, button etc. If Id and CSS is missing then label and tagName is mandatory.|
 
 
 ```js
