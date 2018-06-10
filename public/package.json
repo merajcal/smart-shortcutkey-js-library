@@ -1,0 +1,24 @@
+{
+  "name": "smart-shortcutkey-js-library",
+  "version": "1.0.0",
+  "description": "A smart generic java script based small library to create shortcut/access key for any web application. This library also allows user to create their own shortcut key for the web application based on their convenient key combination.",
+  "main": "ssjsl.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merajcal/smart-shortcutkey-js-library.git"
+  },
+  "keywords": [
+    "shortcut",
+    "key",
+    "shortcut"
+  ],
+  "author": "mohammed meraj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/merajcal/smart-shortcutkey-js-library/issues"
+  },
+  "homepage": "https://github.com/merajcal/smart-shortcutkey-js-library#readme"
+}
