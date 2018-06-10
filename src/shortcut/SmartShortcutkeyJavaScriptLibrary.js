@@ -377,7 +377,7 @@ const elementLevelKeys = ["id", "className", "label", "tagName"];
                     createShowKeyMap('');
                     let x = document.getElementById("ShorcutKeyMapWindow");
                     x.className = "show";
-                }, 1000)
+                }, 2000)
             }
 
         }

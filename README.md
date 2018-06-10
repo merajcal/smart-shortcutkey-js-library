@@ -61,15 +61,18 @@ This library also work if element has unique label.
 |           Key                 |      Value     |                                                   Description                                         |
 |-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
 |   triggerShortcutKeyCode      | shiftKey       |    To trigger the action e.g. shiftKey + l                                                            |
-|   **applicationDefinedKeys**  |   -            |    -                                                                                                  |
+|   openShortcutPopupKeyCode    | 16             |    To open the shortcut key map popup.  default is shift Key(keyCode is 16). keep shift key for 2 seconds ro opn shortcut key map popup.|
+|   createNewShortcutKeyCode    | shiftKey       |    To define new shortcut key for any action. Default is shiftKey. press the shiftKey (keep the key pressed) and click on the element for which shortcut is created. Allowed keys are 'altKey', 'ctrlKey', 'shiftKey'                                                          |
+|   **applicationDefinedKeys**  |   -            |    To define default shortcut key by the application.                                                                                                 |
 |       keyCode                 |   76           |    The letter which will be combined with triggerShortcutKeyCode (i.e. shiftKey) to execute the action.|
 |       letter                  |   l            |    The letter which will be combined with triggerShortcutKeyCode (i.e. shiftKey) to execute the action.|
 |       actionName              |   Login        |    label of the shortcut key|
-|       **element**             |   -            |    -                                                                                                   |
+|       **element**             |   -            |    Element on which shortcut key need to be created.                                                                                                   |
 |           id                  |   xxxx         |    id of the element for which shortcut key need to be defined.                                        |
-|           -className          |   l            |    css class name of the element if id is missing then class selector will be used to locate the element.|
-|           -label              |   l            |    label of the element, if id and css both are missing then label will be used to locate the element.|
-|           -tagName            |   l            |    element type e.g. div, span, button etc. If Id and CSS is missing then label and tagName is mandatory.|
+|           className           |   l            |    css class name of the element if id is missing then class selector will be used to locate the element.|
+|           label               |   l            |    label of the element, if id and css both are missing then label will be used to locate the element.|
+|           tagName             |   l            |    element type e.g. div, span, button etc. If Id and CSS is missing then label and tagName is mandatory.|
+|-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
 
 
 ```js
