@@ -72,7 +72,6 @@ This library also work if element has unique label.
 |           className           |   l            |    css class name of the element if id is missing then class selector will be used to locate the element.|
 |           label               |   l            |    label of the element, if id and css both are missing then label will be used to locate the element.|
 |           tagName             |   l            |    element type e.g. div, span, button etc. If Id and CSS is missing then label and tagName is mandatory.|
-|-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
 
 
 ```js

@@ -4,7 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'ssjsl.min2.js',
+        filename: 'ssjsl.min.js',
         libraryTarget: 'umd'
     },
     module: {

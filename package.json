@@ -4,8 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --config webpack.config.dev.js --entry ./src/index.js --output-filename ./dist/main.js",
-    "dev:open": "webpack-dev-server --mode development --config webpack.config.dev.js --entry ./src/index.js --output-filename ./dist/main.js --open",
+    "dev": "webpack-dev-server --mode development --config webpack.config.dev.js --entry ./src/index.js --output-filename ./build/main.js",
+    "dev:open": "webpack-dev-server --mode development --config webpack.config.dev.js --entry ./src/index.js --output-filename ./build/main.js --open",
     "build": "webpack --mode production && webpack --mode development --config webpack.config.dev.js",
     "build-dev": "webpack --mode development --config webpack.config.dev.js"
   },
