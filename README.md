@@ -29,7 +29,7 @@ keys.
 - **User define shortcut key works only for the browser for which shortcut keys are created**: To reuse user defined shortcut keys across browser then use Export and Import shortcut key feature.
 - **Add/Delete shortcut key**
 
-### Features (Version 1.1.0)
+### Future Features (Version 1.1.0)
 
 - **Shortcut key support for IFrame**: IFrame does not need to have focus to execute the shortcut key.
 - **Create Single Shortcut key for Menu Items**
@@ -53,6 +53,43 @@ This library also work if element has unique label.
 - **Clearing Cache removes all user defined shortcut keys**: Before clearing browser cache please export the all created shortcut keys otherwise all the user defined shortcut keys will be removed.
 
 ### Usage
+
+```<script src="xxx/ssjsl.min.js"></script>```
+
+#### Additional Configurations
+
+|           Key                 |      Value     |                                                   Description                                         |
+|-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
+|   triggerShortcutKeyCode      | shiftKey       |    To trigger the action e.g. shiftKey + l                                                            |
+|   **applicationDefinedKeys**     |   -            |    -                                                                                                  |
+|-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
+|       keyCode                 |   76           |    The letter which will be combined with triggerShortcutKeyCode (i.e. shiftKey) to execute the action.|
+|       letter                  |   l            |    The letter which will be combined with triggerShortcutKeyCode (i.e. shiftKey) to execute the action.|
+|       actionName              |   Login        |    label of the shortcut key|
+|       **element**                |   -            |    -                                                                                                   |
+|-------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
+|           id                 |   xxxx         |    id of the element for which shortcut key need to be defined.                                        |
+|           -className           |   l            |    css class name of the element if id is missing then class selector will be used to locate the element.|
+|           -label               |   l            |    label of the element, if id and css both are missing then label will be used to locate the element.|
+|           -tagName             |   l            |    element type e.g. div, span, button etc. If Id and CSS is missing then label and tagName is mandatory.|
+
+
+```js
+window.ssjsl.setConfig({
+    triggerShortcutKeyCode: 'shiftKey',
+    applicationDefinedKeys:[{
+                    "keyCode": 76,
+                    "letter": "l",
+                    "actionName": "Login",
+                    "element": {
+                        "id": "",
+                        "className": "",
+                        "label": "Login",
+                        "tagName": "DIV"
+                    }
+            }]}
+);
+```
 
 ### Supported Browsers
 - Latest Chrome

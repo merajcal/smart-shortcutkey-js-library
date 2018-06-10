@@ -13,7 +13,7 @@ var Modal = function () {
         maxWidth: 600,
         minWidth: 280,
         overlay: true
-    }
+    };
 
     if (arguments[0] && typeof arguments[0] === "object") {
         this.options = extendDefaults(defaults, arguments[0]);
@@ -21,7 +21,7 @@ var Modal = function () {
 
     if (this.options.autoOpen === true) this.open();
 
-}
+};
 // Open the model
 Modal.prototype.close = function () {
     var _ = this;
@@ -33,7 +33,7 @@ Modal.prototype.close = function () {
     this.overlay.addEventListener(this.transitionEnd, function () {
         if (_.overlay.parentNode) _.overlay.parentNode.removeChild(_.overlay);
     });
-}
+};
 
 
 
@@ -46,7 +46,7 @@ Modal.prototype.open = function (cb) {
         (this.modal.offsetHeight > window.innerHeight ?
             " fin-open fin-anchored" : " fin-open");
     this.overlay.className = this.overlay.className + " fin-open";
-}
+};
 
 function transitionSelect() {
     var el = document.createElement("div");

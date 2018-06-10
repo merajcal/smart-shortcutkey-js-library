@@ -3,6 +3,10 @@ import Modal from './Modal';
 import IEFileDownLoader from './IEFileDownLoader';
 import DeviceHelper from './DeviceHelper';
 
+const supportedCreateNewShortcutKeyCode = ['altKey', 'ctrlKey', 'shiftKey'];
+const firstLevelKeys = ["keyCode", "letter", "actionName", "element"];
+const elementLevelKeys = ["id", "className", "label", "tagName"];
+
 (function (window) {
     function SmartShortcutkeyJavaScriptLibrary() {
         let ssjs = {};
@@ -11,17 +15,18 @@ import DeviceHelper from './DeviceHelper';
         let targetBtn = null;
         let enableShortcuts = true;
         let cachedPresetKeys = [];
-        const supportedCreateNewShortcutKeyCode = ['altKey', 'ctrlKey', 'shiftKey'];
+
         let defaultOptions = {
             openShortcutPopupKeyCode: 16,
             createNewShortcutKeyCode: 'altKey',
-            triggerShortcutKeyCode: 'ctrlKey'
+            triggerShortcutKeyCode: 'ctrlKey',
+            applicationDefinedKeys: {}
         };
 
 
         let config = Object.assign({}, defaultOptions, {});
 
-        LocalStorageHandler.createDB();
+        LocalStorageHandler.createDB(config.applicationDefinedKeys);
         onloadAttachListener();
 
         function addNewKey(event) {
@@ -52,7 +57,7 @@ import DeviceHelper from './DeviceHelper';
                                         if (elem && elem.textContent.trim() === label) {
                                             elem.click();
                                         }
-                                    };
+                                    }
                                 }
                             }
                         }
@@ -118,7 +123,7 @@ import DeviceHelper from './DeviceHelper';
                             LocalStorageHandler.deleteById({
                                 data: parseInt(record.keyCode)});
                         }
-                    };
+                    }
                     saveNewKey(code, key, finalLabel, targetBtn, prompt);
                 });
 
@@ -138,8 +143,7 @@ import DeviceHelper from './DeviceHelper';
                 for(let i=0; i<keyAlreadyExist.length; i++){
                     let record = keyAlreadyExist[i];
                     LocalStorageHandler.deleteById(record.code)
-                };
-
+                }
                 saveNewKey(code, key, finalLabel, targetBtn, prompt);
             }
 
@@ -320,8 +324,7 @@ import DeviceHelper from './DeviceHelper';
                     + '<td>' + config.triggerShortcutKeyCode + ' + ' + key.letter + '</td>'
                     + '<td style="text-align: right"><a style="cursor: pointer; font-size: 14px;" id="deleteShortcutKey_' + key.keyCode + '" title="Delete shortcut key">&#10060;</a></td>'
                     + '</tr>';
-            };
-
+            }
             ShorcutKeyMapWindow.innerHTML = '' +
                 '<div style="display: flex">' +
                 '<div id="newKeyMessage" style="flex: 1; text-align: left">' + getDefaultMessage() + '</div>' +
@@ -347,8 +350,7 @@ import DeviceHelper from './DeviceHelper';
                 let elm = shortcutKeyElms[i];
                 elm.addEventListener('click', deleteShortcutKey);
             }
-        };
-
+        }
         function deleteShortcutKey(event) {
             const code = event.target.id.substr(event.target.id.indexOf('_') + 1, event.target.id.length);
             LocalStorageHandler.deleteById(parseInt(code));
@@ -404,8 +406,46 @@ import DeviceHelper from './DeviceHelper';
             if (config.triggerShortcutKeyCode && supportedCreateNewShortcutKeyCode.indexOf(config.triggerShortcutKeyCode) < 0) {
                 throw Error(config.triggerShortcutKeyCode + ' is not supported, Only supported triggerShortcutKeyCode are ' + supportedCreateNewShortcutKeyCode.toString());
             }
+
+            if(config.applicationDefinedKeys) {
+
+                if(!Array.isArray(config.applicationDefinedKeys))
+                    throw Error("applicationDefinedKeys should be an array");
+                    for (let i = 0; i < config.applicationDefinedKeys.length; i++) {
+                        validateAppKeys(config, i);
+                        LocalStorageHandler.save(config.applicationDefinedKeys[i]);
+                    }
+                    onloadAttachListener();
+            }
         };
 
+        function validateAppKeys(config, i) {
+            const key = config.applicationDefinedKeys[i];
+            let valid = isObjectValid(firstLevelKeys, Object.keys(key));
+            if (!valid) {
+                throw Error("applicationDefinedKeys invalid format");
+            }
+
+            if (key.element) {
+                let valid = isObjectValid(elementLevelKeys, Object.keys(key.element));
+                if (!valid) {
+                    throw Error("applicationDefinedKeys invalid format");
+                }
+            }
+        }
+
+        function isObjectValid(source, applicationDefinedKey) {
+
+            let valid = true;
+            for (let i=0; i< source.length; i++){
+                valid = applicationDefinedKey.indexOf(source[i]) >= 0 ;
+                 if(!valid){
+                     return false;
+                 }
+            }
+
+            return valid;
+        }
 
         function importShortcutKey() {
             let fileInput = document.getElementById("importShortCutKeys");
@@ -440,8 +480,7 @@ import DeviceHelper from './DeviceHelper';
                                 document.getElementById('newKeyMessage').style.color = '#ff0000';
                                 console.error("Key Already exists", result)
                             }
-                        };
-
+                        }
                     } catch (e) {
                         document.getElementById('newKeyMessage').innerHTML = '&#9940; Invalid format ';
                         document.getElementById('newKeyMessage').style.color = '#ff0000';
@@ -509,3 +548,9 @@ import DeviceHelper from './DeviceHelper';
         window.ssjs = SmartShortcutkeyJavaScriptLibrary();
     }
 })(window);
+
+if (typeof Array.isArray === 'undefined') {
+    Array.isArray = function(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    }
+}

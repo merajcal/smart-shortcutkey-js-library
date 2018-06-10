@@ -178,9 +178,18 @@
     // var ShortcutKeyForWebapp = new ShortcutKeyForWebApp({externalStyles: 'shortcutkey.css', triggerShortcutKeyCode: 'shiftKey'});
     // Get the modal
     var modal = document.getElementById('id01');
-    window.ssjs.setConfig({triggerShortcutKeyCode: 'shiftKey', applicationDefinedKeys:{
+    window.ssjs.setConfig({triggerShortcutKeyCode: 'shiftKey', applicationDefinedKeys:[{
+                "keyCode": 79,
+                "letter": "o",
+                "actionName": "Login",
+                "element": {
+                    "id": "",
+                    "className": "",
+                    "label": "Login",
+                    "tagName": "DIV"
+                }
 
-        }})
+        }]});
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {

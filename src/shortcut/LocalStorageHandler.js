@@ -14,10 +14,10 @@ class LocalStorageHandler {
     };
 
 
-    static createDB () {
+    static createDB (applicationDefinedKeys) {
         const sckdb = window.localStorage.getItem(SHORTCUT_KEY_DB);
         if(!sckdb){
-            window.localStorage.setItem(SHORTCUT_KEY_DB, JSON.stringify({}));
+            window.localStorage.setItem(SHORTCUT_KEY_DB, JSON.stringify(applicationDefinedKeys));
         }
     };
 
@@ -28,7 +28,7 @@ class LocalStorageHandler {
 
     static deleteById (id){
         const sckdb = JSON.parse(window.localStorage.getItem(SHORTCUT_KEY_DB));
-        delete sckdb[id]
+        delete sckdb[id];
         window.localStorage.setItem(SHORTCUT_KEY_DB, JSON.stringify(sckdb));
 
     };
