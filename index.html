@@ -1,201 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Smart Shortcut Key JavaScript Library</title>
+    <meta charset="UTF-8">
+    <title>Smart Shortcut Key JavaScript Library</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.css"/>
 
-  <style>
 
-    /* Bordered form */
-    form {
-      border: 3px solid #f1f1f1;
-    }
+    <style>
 
-    /* Full-width inputs */
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
+        /* Bordered form */
+        form {
+            border: 3px solid #f1f1f1;
+        }
 
-    /* Set a style for all buttons */
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
+        /* Full-width inputs */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
 
-    /* Add a hover effect for buttons */
-    button:hover {
-      opacity: 0.8;
-    }
 
-    /* Extra style for the cancel button (red) */
-    .cancelbtn {
-      width: auto;
-      padding: 10px 18px;
-      background-color: #f44336;
-    }
+        /* Add a hover effect for buttons */
+        button:hover {
+            opacity: 0.8;
+        }
 
-    /* Center the avatar image inside this container */
-    .imgcontainer {
-      text-align: center;
-      margin: 24px 0 12px 0;
-    }
+        /* Extra style for the cancel button (red) */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
 
-    /* Avatar image */
-    img.avatar {
-      width: 40%;
-      border-radius: 50%;
-    }
+        /* Center the avatar image inside this container */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
 
-    /* Add padding to containers */
-    .container {
-      padding: 16px;
-    }
+        /* Avatar image */
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
 
-    /* The "Forgot password" text */
-    span.psw {
-      float: right;
-      padding-top: 16px;
-    }
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+        }
 
-    /* Change styles for span and cancel button on extra small screens */
-    @media screen and (max-width: 300px) {
-      span.psw {
-        display: block;
-        float: none;
-      }
-      .cancelbtn {
-        width: 100%;
-      }
-    }
-    /* The Modal (background) */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-      padding-top: 60px;
-    }
+        /* The "Forgot password" text */
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
 
-    /* Modal Content/Box */
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5px auto; /* 15% from the top and centered */
-      border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
-    }
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
 
-    /* The Close Button */
-    .close {
-      /* Position it in the top right corner outside of the modal */
-      position: absolute;
-      right: 25px;
-      top: 0;
-      color: #000;
-      font-size: 35px;
-      font-weight: bold;
-    }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
 
-    /* Close button on hover */
-    .close:hover,
-    .close:focus {
-      color: red;
-      cursor: pointer;
-    }
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
 
-    /* Add Zoom Animation */
-    .animate {
-      -webkit-animation: animatezoom 0.6s;
-      animation: animatezoom 0.6s
-    }
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5px auto; /* 15% from the top and centered */
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */
+        }
 
-    @-webkit-keyframes animatezoom {
-      from {-webkit-transform: scale(0)}
-      to {-webkit-transform: scale(1)}
-    }
+        /* The Close Button */
+        .close {
+            /* Position it in the top right corner outside of the modal */
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
 
-    @keyframes animatezoom {
-      from {transform: scale(0)}
-      to {transform: scale(1)}
-    }
-  </style>
+        /* Close button on hover */
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+    </style>
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Smart Shortcut Key JavaScript Library</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li>
+                <a id="btngithublink" class="nav-link btn btn-primary btn-sm" href="https://github.com/merajcal/smart-shortcutkey-js-library" target="_blank" style="height: 37px;">
+                    GitHub
+                    <svg aria-hidden="true" class="octicon octicon-mark-github" height="20" version="1.1"
+                         viewBox="0 0 16 16" width="20" fill="#fff">
+                        <path fill-rule="evenodd"
+                              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
+            </li>
+            <a id="btnnpmlink" class="nav-link btn btn-primary btn-sm"  href="https://www.npmjs.com/package/smart-shortcutkey-js-library" style="width: 80px; height: 37px; margin-left: 6px" target="_blank">
+                <svg viewBox="0 0 20 7">
+                    <path fill="#CB3837" d="M0 0v6h5v1h4V6h9V0"></path>
+                    <path fill="#FFF" d="M1 1v4h2V2h1v3h1V1h1v5h2V2h1v2H8v1h2V1h1v4h2V2h1v3h1V2h1v3h1V1"></path>
+                </svg>
+            </a>
+        </ul>
+
+    </div>
+</nav>
+
+
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Display List Of Shortcut Keys</h5>
+            <small class="text-muted"><h1><span class="badge badge-primary">1</span></h1></small>
+        </div>
+        <p class="mb-1">Press shift key for 2 seconds. A small popup will be display at bottom right corner. The popup
+            will display list fo already created shortcut keys</p>
+
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Create New Shortcut Key</h5>
+            <small class="text-muted"><h1><span class="badge badge-primary">2</span></h1></small>
+        </div>
+        <p class="mb-1">
+        <ol>
+            <li>Press alt key (keep pressed) and click the element from page with mouse.</li>
+            <li>A modal pop will be opened. Enter a meaning full name to the shortcut key. By default name will be
+                populated with element label.
+            </li>
+            <li>Enter a letter from key board which will be the shortcut key for that action (suppose you enter l letter
+                for login)
+            </li>
+            <li>Click Save</li>
+            <li>Successful message will be displayed</li>
+            <li>Close the modal on click of Done button</li>
+        </ol>
+
+        </p>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Use the Shortcut Key to trigger the action</h5>
+            <small class="text-muted"><h1><span class="badge badge-primary">3</span></h1></small>
+        </div>
+        <p class="mb-1">Press Alt key + l (which you have created the at step 2). Login modal will be opened</p>
+    </a>
+</div>
+
 <!-- Button to open the modal login form -->
-<button onclick="document.getElementById('id01').style.display='block'"><div>Login</div></button>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <button class="btn btn-primary btn-lg" onclick="document.getElementById('id01').style.display='block'" id="loginbtn">
+                Sign In
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- The Modal -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'"
         class="close" title="Close Modal">&times;</span>
 
-  <!-- Modal Content -->
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <img src="data:image/png;base64,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">
+    <!-- Modal Content -->
+    <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+            <img src="data:image/png;base64,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">
 
-    </div>
+        </div>
 
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
 
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
+            <button type="submit" class="btn btn-primary" btn-lg>&nbsp;&nbsp;Login&nbsp;&nbsp;</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
+                Cancel
+            </button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
 </div>
 
-<script src="./dist/ssjsl.min.js"></script>
+<script src="./build/main.js"></script>
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
 
 <script>
     // var ShortcutKeyForWebapp = new ShortcutKeyForWebApp({externalStyles: 'shortcutkey.css', triggerShortcutKeyCode: 'shiftKey'});
     // Get the modal
     var modal = document.getElementById('id01');
-    window.ssjs.setConfig({triggerShortcutKeyCode: 'shiftKey', applicationDefinedKeys:[{
-                "keyCode": 79,
-                "letter": "o",
-                "actionName": "Login",
-                "element": {
-                    "id": "",
-                    "className": "",
-                    "label": "Login",
-                    "tagName": "DIV"
-                }
+    window.ssjs.setConfig({
+        triggerShortcutKeyCode: 'shiftKey', applicationDefinedKeys: [{
+            "keyCode": 83,
+            "letter": "s",
+            "actionName": "Sign In",
+            "element": {
+                "id": "loginbtn",
+                "className": "",
+                "label": "Sign In",
+                "tagName": "DIV"
+            }
 
-        }]});
+        }]
+    });
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
+
+    var tripToShowNavigation = new Trip([
+        { sel : $("#loginbtn"),
+            content : "Press <b>Shift Key + s to sign in</b> login. <br/> Please press shift for 2 seconds to open the shortcut key list popup",
+            position : "e" },
+    ], {
+        showNavigation : false,
+        showCloseBox : true,
+        delay : -1
+    });
+
+
+    tripToShowNavigation.start();
+
+
+
+    // Initialize the tour
+    // tour.init();
+
+    // Start the tour
+    // tour.start();
 </script>
 </body>
 </html>

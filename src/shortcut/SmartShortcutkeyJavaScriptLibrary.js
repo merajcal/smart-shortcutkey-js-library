@@ -73,7 +73,7 @@ const elementLevelKeys = ["id", "className", "label", "tagName"];
                             let elems = document.getElementsByTagName(record.element.tagName);
                             for(let i=0; i< elems.length; i++){
                                 let elm =elems[i];
-                                if (elm.textContent === label) {
+                                if (elm.textContent.trim() === label) {
                                     elm.click();
                                     break;
                                 }
@@ -98,7 +98,7 @@ const elementLevelKeys = ["id", "className", "label", "tagName"];
 
             let isKeyAlreadyExists = getExisitngKEyByCode(code);
             let isNewKey = true;
-            const finalLabel = label ? label : targetBtn.textContent;
+            const finalLabel = label ? label : targetBtn.textContent.trim();
             if (isKeyAlreadyExists.length > 0) {
 
                 const paragraph4 = document.createElement('p');
@@ -202,7 +202,7 @@ const elementLevelKeys = ["id", "className", "label", "tagName"];
             input1.type = "text";
             input1.className = "input";
             input1.title = "Enter the name / label for this shortcut";
-            input1.value = targetBtn.textContent;
+            input1.value = targetBtn.textContent.trim();
             input1.setAttribute('id', 'fin-input-label');
 
             let input2 = document.createElement("input");

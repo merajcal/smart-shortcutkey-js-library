@@ -91,6 +91,9 @@ window.ssjsl.setConfig({
 );
 ```
 
+# Demo Application
+<a href="https://smart-shortcutkey-js-library.herokuapp.com/" target="_blank">Smart Shortcut Key Demo App</a>
+
 ### Supported Browsers
 - Latest Chrome
 - Latest Firefox
