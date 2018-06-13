@@ -54,7 +54,26 @@ This library also work if element has unique label.
 
 ### Usage
 
-```<script src="xxx/ssjsl.min.js"></script>```
+
+```js
+window.ssjsl.setConfig({
+    triggerShortcutKeyCode: 'shiftKey',
+    applicationDefinedKeys:[{
+                    "keyCode": 76,
+                    "letter": "l",
+                    "actionName": "Login",
+                    "element": {
+                        "id": "",
+                        "className": "",
+                        "label": "Login",
+                        "tagName": "DIV"
+                    }
+            }]}
+);
+```
+
+# Demo Application
+<a href="https://smart-shortcutkey-js-library.herokuapp.com/" target="_blank">Smart Shortcut Key Demo App</a>
 
 #### Additional Configurations
 
